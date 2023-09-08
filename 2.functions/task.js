@@ -9,7 +9,7 @@ function getArrayParams(...arr) {
     return 0;
   }
 
-  let avg = (min + max / arr.length).toFixed(2);
+  let avg = ((min + max) / arr.length).toFixed(2);
 
   return { min: min, max: max, avg: Number(avg) };
 }
@@ -49,7 +49,7 @@ function differenceEvenOddWorker(...arr) {
     return 0;
   }
 
-  return sumOddElement - sumEvenElement;
+  return sumEvenElement - sumOddElement;
 }
 
 function averageEvenElementsWorker(...arr) {
@@ -71,4 +71,17 @@ function averageEvenElementsWorker(...arr) {
 
 //задача 3
 
-function makeWork(arrOfArr, func) {}
+function makeWork(arrOfArr, func) {
+  let maxWorkerResult;
+  let array = [];
+  let maxResult = [];
+
+  for (let i = 0; i < arrOfArr.length; a++) {
+    maxWorkerResult = arrOfArr[i];
+    array.push(maxWorkerResult);
+    maxResult.push(func(maxWorkerResult));
+
+    const max = maxResult.reduce((a, b) => Math.max(a, b), -Infinity);
+    return max;
+  }
+}
