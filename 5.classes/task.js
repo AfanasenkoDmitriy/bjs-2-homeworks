@@ -8,21 +8,22 @@ class PrintEditionItem {
   }
 
   fix() {
-      if (this.state > 100) {
-          this.state = 100;
-      } else if (this.state < 0) {
-        this.state = 0;
-      }
-      return this.state * 1.5;
+    this.state *= 1.5;
   }
 
-  setState(newState) {
-      this.state = newState;
-      
+  set state(state) {
+    this._state = state;
+    if (this._state > 100) {
+      this._state = 100;
+    } else if (this._state <= 0) {
+      this._state = 0;
+    } else {
+      return this._state;
+    }
   }
 
-  getState() {
-    return _newState;
+  get state() {
+    return this._state;
   }
 }
 
@@ -72,3 +73,21 @@ class DetectiveBook extends Book {
 }
 
 let printEditionItem = new PrintEditionItem();
+
+class Library {
+  constructor(name = '', books = []) {
+    this.name = name;
+    this.books = books;
+  }
+    addBook(book) {
+        if (book.state > 30) {
+            this.books.push(book)
+        }
+    }
+
+    findBookBy(type, value) {
+        this.type = type;
+        this.value = value;
+        
+    }
+}
