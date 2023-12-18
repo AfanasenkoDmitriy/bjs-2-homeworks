@@ -86,8 +86,7 @@ class Library {
     }
 
     findBookBy(type, value) {
-        this.type = type;
-        this.value = value;
+       this.books.find(['type'])
         
     }
 }
