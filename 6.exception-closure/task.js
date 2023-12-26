@@ -1,26 +1,20 @@
 ﻿function parseCount(number) {
-  try {
-    this.number = Number.parseFloat(number);
-    return number;
-  } catch (error) {
-    if (number === NaN) {
-      return new Error("Невалидное значение");
+    this.number = Number(parseFloat(number).toFixed(2));
+    try {
+        if (!isNaN(number)) {
+            return parseInt(number);
+        }
+    } catch (error) {
+       throw "невалидное значение";
     }
-  } finally {
-    return Math.floor(number);
-  }
+    
 }
 
 function validateCount(number) {
-  this.number = number;
-  let result = 0;
-  try {
-    result = parseCount(number);
-  } catch (error) {
-    if (result === NaN) {
-      return new Error("Невалидное значение");
+    this.number = parseCount(number)
+    if (!isNaN(number)) {
+        return Number(number);
+    } else {
+        throw "невалидное значение";
     }
-  } finally {
-    return result.toFixed(2);
-  }
 }
