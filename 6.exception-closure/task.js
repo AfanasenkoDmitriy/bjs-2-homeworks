@@ -2,7 +2,7 @@
     this.number = Number(parseFloat(number).toFixed(2));
     try {
         if (!isNaN(number)) {
-            return parseInt(number);
+            return Number(number);
         }
     } catch (error) {
        throw "невалидное значение";
