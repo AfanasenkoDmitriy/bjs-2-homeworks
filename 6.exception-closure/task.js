@@ -1,11 +1,11 @@
-﻿function parseCount(number) {
+﻿
+function parseCount(number) {
     this.number = number;
     if (!isNaN(number)) {
         return parseFloat(number);
     } else {
         throw new Error("невалидное значение");
     }
-    
 }
 
 function validateCount(number) {
