@@ -5,19 +5,16 @@ class AlarmClock {
   }
 
   addClock(time, callback) {
-    if (arguments.length != 2 || time === null || callback === null) {
+    if (!time || !callback) {
       throw new Error("Отсутствуют обязательные аргументы");
-    } else if (this.alarmCollection.find((clock) => clock === clock)) {
+    } else if (this.alarmCollection.find((item) => item.time === time)) {
       console.warn("Уже присутствует звонок на это же время");
     }
     this.alarmCollection.push({ callback, time, canCall: true });
   }
 
   removeClock(time) {
-    let index = this.alarmCollection.filter((item) => item.time === time);
-    if (index) {
-      this.alarmCollection.splice(index, 1);
-    }
+    return this.alarmCollection.filter((item) => item.time === time);
   }
 
   getCurrentFormattedTime() {
